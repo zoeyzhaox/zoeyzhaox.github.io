@@ -1,44 +1,329 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Zoey Zhao</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: 60px auto;
-      line-height: 1.6;
+    :root{
+      --bg:#ffffff;
+      --text:#111827;
+      --muted:#4b5563;
+      --line:#e5e7eb;
+      --nav:#0b0f16;
+      --navText:#e5e7eb;
+      --navMuted:#9ca3af;
+      --accent:#b91c1c; /* deep red like many academic sites */
+      --max: 980px;
     }
-    h1 { margin-bottom: 5px; }
-    .section { margin-top: 40px; }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.65;
+    }
+
+    /* Layout */
+    .wrap{
+      display:flex;
+      min-height:100vh;
+    }
+
+    /* Left nav */
+    .sidebar{
+      width:260px;
+      background:var(--nav);
+      color:var(--navText);
+      padding:28px 18px;
+      position:sticky;
+      top:0;
+      height:100vh;
+      overflow:auto;
+      border-right:1px solid #111827;
+    }
+    .site-title{
+      font-size:30px;
+      font-weight:700;
+      margin:6px 0 14px;
+      line-height:1.1;
+    }
+    .site-sub{
+      color:var(--navMuted);
+      font-size:14px;
+      margin-bottom:18px;
+    }
+    .nav{
+      margin-top:18px;
+      border-top:1px solid rgba(229,231,235,0.18);
+      padding-top:14px;
+    }
+    .nav a{
+      display:block;
+      color:var(--navText);
+      text-decoration:none;
+      padding:10px 10px;
+      border-radius:8px;
+      font-size:15px;
+    }
+    .nav a:hover{
+      background:rgba(229,231,235,0.10);
+    }
+    .nav small{
+      color:var(--navMuted);
+      display:block;
+      margin-top:16px;
+      padding:0 10px;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    /* Right content */
+    .content{
+      flex:1;
+      padding:34px 26px;
+    }
+    .container{
+      max-width:var(--max);
+      margin:0 auto;
+    }
+
+    /* Header block */
+    .hero{
+      display:grid;
+      grid-template-columns: 180px 1fr;
+      gap:22px;
+      align-items:start;
+      padding-bottom:22px;
+      border-bottom:1px solid var(--line);
+    }
+    .avatar{
+      width:180px;
+      height:220px;
+      border-radius:6px;
+      object-fit:cover;
+      border:1px solid var(--line);
+      background:#f3f4f6;
+    }
+    .hero h1{
+      margin:0;
+      font-size:40px;
+      line-height:1.1;
+    }
+    .hero .affil{
+      margin:8px 0 14px;
+      color:var(--muted);
+      font-size:16px;
+    }
+    .hero .links a{
+      color:var(--text);
+      text-decoration:none;
+      border-bottom:1px solid rgba(17,24,39,0.25);
+      margin-right:12px;
+      padding-bottom:2px;
+    }
+    .hero .links a:hover{
+      border-bottom-color:var(--accent);
+      color:var(--accent);
+    }
+
+    /* Sections */
+    section{
+      padding:26px 0;
+      border-bottom:1px solid var(--line);
+    }
+    section:last-child{border-bottom:none}
+    h2{
+      margin:0 0 12px;
+      font-size:28px;
+      letter-spacing:-0.01em;
+    }
+    p{margin:10px 0}
+    .muted{color:var(--muted)}
+    .pill{
+      display:inline-block;
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:6px 10px;
+      margin:6px 6px 0 0;
+      font-size:13px;
+      color:var(--muted);
+      background:#fafafa;
+    }
+
+    /* Publications list */
+    .pub{
+      margin:14px 0;
+      padding:12px 14px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      background:#fff;
+    }
+    .pub .title{
+      font-weight:700;
+      margin-bottom:4px;
+    }
+    .pub .meta{
+      color:var(--muted);
+      font-size:14px;
+    }
+    .pub a{
+      color:var(--accent);
+      text-decoration:none;
+    }
+    .pub a:hover{ text-decoration:underline; }
+
+    /* News */
+    ul.news{
+      margin:10px 0 0 18px;
+      padding:0;
+    }
+    ul.news li{
+      margin:8px 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .wrap{flex-direction:column}
+      .sidebar{
+        width:100%;
+        height:auto;
+        position:relative;
+      }
+      .hero{
+        grid-template-columns: 140px 1fr;
+      }
+      .avatar{width:140px;height:170px}
+    }
   </style>
 </head>
+
 <body>
+  <div class="wrap">
 
-<h1>Zoey Zhao</h1>
-<p>Applied Mathematics • UC Irvine</p>
+    <!-- LEFT NAV -->
+    <aside class="sidebar">
+      <div class="site-title">Zoey Zhao</div>
+      <div class="site-sub">Applied Mathematics • UC Irvine</div>
 
-<div class="section">
-  <h2>About</h2>
-  <p>
-    I am an undergraduate student in Applied Mathematics at UC Irvine.
-    My research focuses on polynomial inequalities and Łojasiewicz-type inequalities.
-  </p>
-</div>
+      <nav class="nav">
+        <a href="#home">Home</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
 
-<div class="section">
-  <h2>Research Paper</h2>
-  <p>
-    Title: (To be updated)<br>
-    PDF: Coming soon.
-  </p>
-</div>
+        <small>Quick Links</small>
+        <a href="#" onclick="alert('Replace this with your CV PDF link (e.g., cv.pdf).'); return false;">CV (PDF)</a>
+        <a href="#" onclick="alert('Replace this with your Google Scholar link.'); return false;">Google Scholar</a>
+        <a href="#" onclick="alert('Replace this with your GitHub profile link.'); return false;">GitHub</a>
+      </nav>
+    </aside>
 
-<div class="section">
-  <h2>Contact</h2>
-  <p>Email: yourname@uci.edu</p>
-</div>
+    <!-- RIGHT CONTENT -->
+    <main class="content">
+      <div class="container">
 
+        <!-- HOME -->
+        <div class="hero" id="home">
+          <!-- Put your headshot file in the repo as "headshot.jpg" and this will work -->
+          <img class="avatar" src="headshot.jpg" alt="Zoey Zhao headshot" />
+
+          <div>
+            <h1>Zoey Zhao</h1>
+            <div class="affil">Undergraduate • Applied Mathematics • University of California, Irvine</div>
+
+            <p>
+              I am an undergraduate student in Applied Mathematics at UC Irvine.
+              My current research focuses on polynomial inequalities and Łojasiewicz-type inequalities.
+            </p>
+
+            <div class="links">
+              <!-- Replace # with real links -->
+              <a href="#" onclick="alert('Paste your email or a contact form link here.'); return false;">Email</a>
+              <a href="#" onclick="alert('Paste your Google Scholar link here.'); return false;">Scholar</a>
+              <a href="#" onclick="alert('Paste your GitHub link here.'); return false;">GitHub</a>
+            </div>
+
+            <div style="margin-top:12px">
+              <span class="pill">Real analysis</span>
+              <span class="pill">Optimization</span>
+              <span class="pill">Polynomial inequalities</span>
+              <span class="pill">Łojasiewicz inequality</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RESEARCH -->
+        <section id="research">
+          <h2>Research</h2>
+          <p class="muted">
+            (Write 2–4 sentences that clearly say what you study, what the problem is, and what your contribution is.)
+          </p>
+
+          <h3 style="margin:18px 0 6px">Current project</h3>
+          <p>
+            <strong>Łojasiewicz-type inequality for a two-variable polynomial.</strong>
+            We study the optimal exponent β in an inequality of the form
+            <em>|F|^{2β} ≤ C|∇F|²</em> near the origin for
+            <em>F(x,y)=ax²+by²+cx³+dx²y+exy²+fy³</em>, with careful case classification and worst-direction analysis.
+          </p>
+
+          <p>
+            <strong>Draft:</strong> <a href="paper.pdf" target="_blank">paper.pdf</a>
+            <span class="muted">(Upload your PDF to the repo with this exact filename.)</span>
+          </p>
+        </section>
+
+        <!-- PUBLICATIONS -->
+        <section id="publications">
+          <h2>Publications / Preprints</h2>
+
+          <div class="pub">
+            <div class="title">Title of your paper (update)</div>
+            <div class="meta">
+              Zoey Zhao. <span class="muted">Preprint / Working draft</span> (2026).
+              • <a href="paper.pdf" target="_blank">PDF</a>
+              • <a href="#" onclick="alert('Paste arXiv/OSF/other link here'); return false;">Link</a>
+            </div>
+          </div>
+
+          <p class="muted">
+            If you have no publication yet, it’s totally fine—keep one “Working draft” entry with a PDF link.
+          </p>
+        </section>
+
+        <!-- NEWS -->
+        <section id="news">
+          <h2>News</h2>
+          <ul class="news">
+            <li><strong>(2026-02)</strong> Personal website launched.</li>
+            <li><strong>(2026-02)</strong> Working on a draft on Łojasiewicz-type inequalities.</li>
+          </ul>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+          <h2>Contact</h2>
+          <p>
+            Email: <strong>yourname@uci.edu</strong>
+            <span class="muted">(Replace this with your real email, or write “available upon request”.)</span>
+          </p>
+        </section>
+
+        <p class="muted" style="margin-top:22px;font-size:12px">
+          © <span id="year"></span> Zoey Zhao • Hosted on GitHub Pages
+        </p>
+
+      </div>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
